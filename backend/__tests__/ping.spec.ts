@@ -11,3 +11,11 @@ describe('We are grateful to you for doing this it.', () => {
       });
   })
 });
+
+describe('Receives payload JSON from mySQL database', () => {
+  it('displays payload', async () => {
+    await request(app)
+      .get('/events')
+      .expect(200)
+  });
+})

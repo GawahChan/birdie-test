@@ -7,6 +7,7 @@ import { Dispatch } from 'redux';
 import Title from '@App/components/Title';
 import Logo from '@App/components/Logo';
 import SubTitle from '@App/components/SubTitle';
+import Chart from '@App/components/Chart';
 
 const LogoUrl = require('../../assets/images/logo-birdie.svg');
 
@@ -51,6 +52,7 @@ class App extends React.Component<AppProps, AppState> {
           <Title>Welcome to the birdie test</Title>
           <SubTitle>Best of luck!</SubTitle>
         </AppContainer>
+        <Chart />
       </>
     );
   }
