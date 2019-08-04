@@ -26,7 +26,12 @@ class Chart extends React.Component<ChartProps, ChartState> {
 
     componentWillMount() {
         fetch('http://localhost:8000/moodObservation/events')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                return response.json();
+            })
             .then(data => data.map((fetchedData: any) => JSON.parse(fetchedData.payload)))
             .then(data => {
                 let keys = Object.keys(data[0]);
@@ -41,11 +46,14 @@ class Chart extends React.Component<ChartProps, ChartState> {
                 this.setState({ dataMoods: observedMoods });
 
                 this.setState({ data });
-
+            
                 console.log('this is my data: ', this.state.data);
                 console.log('this is my dataKeys: ', this.state.dataKeys);
                 console.log('this is my dataMoods :', this.state.dataMoods);
                 console.log('this is allMoods :', this.state.allMoods);
+            })
+            .catch(error => {
+                console.log(error);
             });
     }
 
