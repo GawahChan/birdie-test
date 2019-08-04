@@ -1,4 +1,6 @@
 import * as React from 'react';
+import Title from '@App/components/Title';
+import SubTitle from '@App/components/SubTitle';
 
 interface ChartProps {
 
@@ -7,6 +9,7 @@ interface ChartProps {
 interface ChartState {
     data: [];
     dataKeys: string[];
+    dataMoods: [];
 }
 
 class Chart extends React.Component<ChartProps, ChartState> {
@@ -15,6 +18,7 @@ class Chart extends React.Component<ChartProps, ChartState> {
         this.state = {
             data: [],
             dataKeys: [],
+            dataMoods: []
         };
     }
 
@@ -25,6 +29,11 @@ class Chart extends React.Component<ChartProps, ChartState> {
         .then(data => {
             let keys = Object.keys(data[0]);
             this.setState({dataKeys: keys});
+
+            let moods = data.map(observations => observations.mood);
+            let observedMoods = moods.filter((mood, index) => moods.indexOf(mood) === index);
+            this.setState({dataMoods: observedMoods});
+
             this.setState({data});
         });
     }
@@ -34,9 +43,20 @@ class Chart extends React.Component<ChartProps, ChartState> {
         console.log('this is my keys: ', this.state.dataKeys);
         return (
             <div>
-                <h1>This is DATA Component</h1>
+                <Title>Overall Mood Average</Title>
+                <SubTitle>(based on each observation)</SubTitle>
+                {this.state.dataMoods.map(dataMood => {
+                    return (
+                        <SubTitle key={dataMood}>{dataMood}</SubTitle>
+                    );
+                })}
                 <hr />
-                <p>{this.state.dataKeys}</p>
+                {this.state.dataKeys.map(dataKey => {
+                    return (
+                        <SubTitle key={dataKey}>{dataKey}</SubTitle>
+                    );
+                })}
+                <hr />
             </div>
         );
     }
