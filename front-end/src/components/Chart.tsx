@@ -1,7 +1,9 @@
 import * as React from 'react';
+
 import Title from '@App/components/Title';
 import SubTitle from '@App/components/SubTitle';
 import Bar from '@App/components/Bar';
+
 interface ChartProps {
 
 }
@@ -24,7 +26,7 @@ class Chart extends React.Component<ChartProps, ChartState> {
         };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         fetch('http://localhost:8000/moodObservation/events')
             .then(response => {
                 if (!response.ok) {
@@ -47,10 +49,10 @@ class Chart extends React.Component<ChartProps, ChartState> {
 
                 this.setState({ data });
             
-                console.log('this is my data: ', this.state.data);
-                console.log('this is my dataKeys: ', this.state.dataKeys);
-                console.log('this is my dataMoods :', this.state.dataMoods);
-                console.log('this is allMoods :', this.state.allMoods);
+                // console.log('this is my data: ', this.state.data);
+                // console.log('this is my dataKeys: ', this.state.dataKeys);
+                // console.log('this is my dataMoods :', this.state.dataMoods);
+                // console.log('this is allMoods :', this.state.allMoods);
             })
             .catch(error => {
                 console.log(error);

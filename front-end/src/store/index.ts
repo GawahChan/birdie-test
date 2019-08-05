@@ -2,7 +2,7 @@ import { applyMiddleware, compose, createStore, GenericStoreEnhancer } from 'red
 import createSagaMiddleware from 'redux-saga';
 import createBrowserHistory from 'history/createBrowserHistory';
 import { rootReducer } from '@App/store/reducers';
-import initSaga from '@App/store/sagas';
+import watchData from './sagas';
 
 declare global {
   interface Window {
@@ -21,6 +21,6 @@ const store = createStore(
   composeEnhancers(applyMiddleware(sagaMiddleware)),
 );
 
-sagaMiddleware.run(initSaga);
+sagaMiddleware.run(watchData);
 
 export default store;
