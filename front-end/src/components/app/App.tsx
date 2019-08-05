@@ -53,14 +53,17 @@ class App extends React.Component<Props, AppState> {
   }
 
   public render() {
-    console.log('app props in APP: ', this.props.data);
+    console.log('data props in APP: ', this.props.data);
+    console.log('dataKeys props in APP: ', this.props.dataKeys);
+    console.log('allMoods props in APP: ', this.props.allMoods);
+    console.log('dataMoods props in APP: ', this.props.dataMoods);
     return (
       <>
         <GlobalStyle />
         <AppContainer>
           <Logo src={LogoUrl} />
           <Title>Welcome to the birdie test</Title>
-          <SubTitle>hello I have redux</SubTitle>
+          <SubTitle>I have redeux! </SubTitle>
         </AppContainer>
         <Chart />
       </>
@@ -69,10 +72,16 @@ class App extends React.Component<Props, AppState> {
 }
 interface PropsFromState {
   data: any;
+  dataKeys: [];
+  allMoods: [];
+  dataMoods: [];
 }
 
 const mapStateToProps = (state: RootState, ownProps: object): PropsFromState => ({
-  data: state.dataState.appData
+  data: state.data.allData,
+  dataKeys: state.data.dataKeys,
+  allMoods: state.data.allMoods,
+  dataMoods: state.data.dataMoods
 });
 
 interface PropsFromDispatch {
