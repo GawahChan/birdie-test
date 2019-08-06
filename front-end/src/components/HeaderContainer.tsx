@@ -7,7 +7,8 @@ justify-content: center;
 align-items: center;
 text-align: center;
 padding: 20px;
-border-bottom: 1px solid #DDDDDD
+border-bottom: 2px solid #DDDDDD;
+background-color: #a6deee
 `;
 
 export default HeaderContainer;

@@ -15,6 +15,7 @@ interface MonthChart {
 
 const MonthChartContainer = styled.div`
     border: 1px solid #DDDDDD;
+    border-radius: 5px;
     box-shadow: 3px 3px 3px #DDDDDD;
     padding: 10px;
 

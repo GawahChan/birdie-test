@@ -73,8 +73,12 @@ class App extends React.Component<Props, AppState> {
               <Button>Click here!</Button>
             </a>
             <CreditsContainer>
+            <a href="https://gawahchan.github.io/portfolio/" target="_blank" >
               <SubTitle>Created by Gawah Chan</SubTitle>
-              <SubTitle>Please check out the git repository </SubTitle>
+            </a>
+            <a href="https://github.com/GawahChan/birdie-test" target="_blank" >
+              <SubTitle>Please check out my git repository for this test here</SubTitle>
+            </a>
             </CreditsContainer>
           </FooterContainer>
         </AppContainer>

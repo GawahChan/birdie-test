@@ -6,6 +6,7 @@ const BodyContainer = styled.div`
     grid-gap: 15px;
     padding-top: 30px;
     padding-bottom: 30px;
+
 `;
 
 export default BodyContainer;
