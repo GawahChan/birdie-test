@@ -15,8 +15,16 @@ interface MonthChart {
 
 const MonthChartContainer = styled.div`
     border: 1px solid #DDDDDD;
-    padding: 10px;
     box-shadow: 3px 3px 3px #DDDDDD;
+    padding: 10px;
+
+    &:hover { animation: pulse 5s infinite;}
+
+    @keyframes pulse {
+        0% { transform: scale(1) }
+        50% { transform: scale(1.03) }
+        100% { transform: scale(1) }
+}
 `;
 
 export const MonthChart: React.FC<MonthChart> = (props) => {
@@ -25,9 +33,6 @@ export const MonthChart: React.FC<MonthChart> = (props) => {
             props.month === 'May' ? observation.timestamp.includes('2019-05') : null;
     });
     let monthAllMoods = monthData.map((observation: any) => observation.mood);
-
-    console.log('monthData:', monthData);
-    console.log('MonthModos:', monthAllMoods);
 
     return (
         <MonthChartContainer>

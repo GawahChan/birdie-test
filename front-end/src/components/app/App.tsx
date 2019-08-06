@@ -8,12 +8,15 @@ import { requestGetData } from '@App/store/actions/index';
 
 import HeaderContainer from '@App/components/HeaderContainer';
 import BodyContainer from '@App/components/BodyContainer';
+import FooterContainer from '@App/components/FooterContainer';
+import CreditsContainer from '@App/components/CreditsContainer';
 
 import Title from '@App/components/Title';
 import Logo from '@App/components/Logo';
 import SubTitle from '@App/components/SubTitle';
 import { MoodChart } from '@App/components/MoodChart';
-import { MonthChart } from '../MonthChart';
+import { MonthChart } from '@App/components/MonthChart';
+import Button from '@App/components/Button';
 
 const LogoUrl = require('../../assets/images/logo-birdie.svg');
 
@@ -31,7 +34,6 @@ const GlobalStyle = createGlobalStyle`
       height: 100%;
     }
   }
-
 `;
 
 const AppContainer = styled.div`
@@ -49,13 +51,6 @@ class App extends React.Component<Props, AppState> {
   }
 
   public render() {
-    // console.log('data props in APP: ', this.props.data);
-    // console.log('dataKeys props in APP: ', this.props.dataKeys);
-    // console.log('allMoods props in APP: ', this.props.allMoods);
-    console.log('dataMoods props in APP: ', this.props.dataMoods);
-    // console.log('timeStamp props in APP: ', this.props.timeStamp);
-    // console.log('allMonths props in APP: ', this.props.allMonths);
-    // console.log('eachMonth props in APP: ', this.props.eachMonth);
     let months = this.props.eachMonth.join(' and ');
     return (
       <>
@@ -65,13 +60,23 @@ class App extends React.Component<Props, AppState> {
             <Logo src={LogoUrl} />
             <Title>Welcome to birdie!</Title>
             <SubTitle>Here are some mood observation statistics!</SubTitle>
-            <SubTitle>(based on {this.props.allMoods.length} observations between {months} in 2019)</SubTitle>
+            <SubTitle>(These are based on {this.props.allMoods.length} observations between {months} in 2019)</SubTitle>
           </HeaderContainer>
-            <BodyContainer>
-              <MoodChart {...this.props} />
-              <MonthChart {...this.props} month="April" />
-              <MonthChart {...this.props} month="May" />
-            </BodyContainer>
+          <BodyContainer>
+            <MoodChart {...this.props} />
+            <MonthChart {...this.props} month="April" />
+            <MonthChart {...this.props} month="May" />
+          </BodyContainer>
+          <FooterContainer>
+            <Title>For more information about birdie:</Title>
+            <a href="https://www.birdie.care/" target="_blank" >
+              <Button>Click here!</Button>
+            </a>
+            <CreditsContainer>
+              <SubTitle>Created by Gawah Chan</SubTitle>
+              <SubTitle>Please check out the git repository </SubTitle>
+            </CreditsContainer>
+          </FooterContainer>
         </AppContainer>
       </>
     );

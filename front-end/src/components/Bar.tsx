@@ -16,6 +16,8 @@ const Bar = styled.div<BarProps>`
     height: 3rem;
     width: 0;
     padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-right: 1px;
 `;
 
 export default Bar;
