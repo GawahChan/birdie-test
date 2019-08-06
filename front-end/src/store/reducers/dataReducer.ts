@@ -1,10 +1,17 @@
-import { RECEIVE_GET_DATA, RECEIVE_DATA_KEYS, RECEIVE_ALL_MOODS, RECEIVE_DATA_MOODS } from '../actions/index';
+import { RECEIVE_GET_DATA } from '../actions/index';
+import { RECEIVE_DATA_KEYS } from '../actions/index';
+import { RECEIVE_ALL_MOODS } from '../actions/index';
+import { RECEIVE_DATA_MOODS } from '../actions/index';
+import { RECEIVE_DATA_TIMESTAMP } from '../actions/index';
 
 const initialState = {
-    appData: [],
+    allData: [],
     dataKeys: [],
     allMoods: [],
-    dataMoods: []
+    dataMoods: [],
+    timeStamp: [],
+    allMonths: [],
+    eachMonth: []
 };
 
 const dataReducer = (state = initialState, action) => {
@@ -13,7 +20,7 @@ const dataReducer = (state = initialState, action) => {
             return {
                 ...state,
                 allData: action.data
-            }; 
+            };
         case RECEIVE_DATA_KEYS:
             return {
                 ...state,
@@ -28,6 +35,13 @@ const dataReducer = (state = initialState, action) => {
             return {
                 ...state,
                 dataMoods: action.moods
+            };
+        case RECEIVE_DATA_TIMESTAMP:
+            return {
+                ...state,
+                timeStamp: action.timeStamp,
+                allMonths: action.allMonths,
+                eachMonth: action.eachMonth,
             };
         default:
             return state;
