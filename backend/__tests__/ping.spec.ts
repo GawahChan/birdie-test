@@ -12,10 +12,11 @@ describe('We are grateful to you for doing this it.', () => {
   })
 });
 
-describe('Receives payload JSON from mySQL database', () => {
-  it('displays payload', async () => {
+describe('Receives JSON from mySQL database', () => {
+  it('displays JSON in localhost:8000/moodObservation/events', async () => {
     await request(app)
-      .get('/events')
+      .get('/moodObservation/events')
       .expect(200)
+      .expect(res => res.body > 0)
   });
 })
